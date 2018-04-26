@@ -1,0 +1,58 @@
+{
+  "name": "react-perf",
+  "version": "1.0.0",
+  "description": "Dynamic imports, code splitting, and long term caching.",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config ./webpack/build.js",
+    "dev": "webpack-dev-server --config ./webpack/dev.js",
+    "lint": "./node_modules/eslint/bin/eslint.js ./src/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dezeeuw Louis",
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.6.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-loadable": "^5.3.1",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-lodash": "^3.3.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
+    "html-webpack-plugin": "^2.30.1",
+    "lodash": "^4.17.10",
+    "webpack": "^3.10.0",
+    "webpack-bundle-analyzer": "^2.9.1",
+    "webpack-dev-server": "^2.9.7",
+    "why-did-you-update": "^0.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ldezeeuw/react-perf.git"
+  },
+  "keywords": [
+    "React",
+    "perf",
+    "code",
+    "splitting",
+    "longtime",
+    "caching"
+  ],
+  "bugs": {
+    "url": "https://github.com/ldezeeuw/react-perf/issues"
+  },
+  "homepage": "https://github.com/ldezeeuw/react-perf#readme"
+}

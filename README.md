@@ -1,2 +1,1 @@
-# react-perf
-Repository with best practice for performance with react 16
+#Dynamic imports, code splitting, and long term caching
