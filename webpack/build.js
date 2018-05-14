@@ -1,11 +1,14 @@
 const webpack               = require('webpack');
 const path                  = require('path');
+const package               = require('./../package.json');
 const HtmlWebpackPlugin     = require('html-webpack-plugin');
+const UglifyJSPlugin        = require('uglifyjs-webpack-plugin');
+const CompressionPlugin     = require('compression-webpack-plugin');
+const BundleAnalyzerPlugin  = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const APP_DIR               = path.resolve(__dirname, './../src/app');
 const BUILD_DIR             = path.resolve(__dirname, './../dist');
 const MODULES_DIR           = path.resolve(__dirname, './../node_modules');
-const package               = require('./../package.json');
-const BundleAnalyzerPlugin  = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const plugins = [
     new HtmlWebpackPlugin({title: 'Caching and Code Splitting', template: BUILD_DIR + '/index.html'}),
@@ -13,15 +16,14 @@ const plugins = [
     new webpack.optimize.CommonsChunkPlugin({name:'vendor', filename: 'vendor.[chunkhash].js'}),
     new webpack.optimize.CommonsChunkPlugin({name:'manifest'}),
     new webpack.DefinePlugin({'process.env.NODE_ENV': '"production"', 'process.env.PLATFORM_ENV': '"web"', 'process.env.BABEL_ENV': '"production"'}),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-            screw_ie8: true,
-            dead_code: true,
-            unused: true
-        },
-        output: {comments: false},
-        exclude: [/\.min\.js$/gi]
+    new webpack.NoEmitOnErrorsPlugin(),
+    new UglifyJSPlugin(),
+    new CompressionPlugin({
+        asset: "[path].gz[query]",
+        algorithm: "gzip",
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8
     })
 ];
 
@@ -54,6 +56,9 @@ module.exports = {
             use: {
                 loader: 'babel-loader'
             }
+        }, {
+            test: /\.less$/,
+            use: ['style-loader','css-loader',"less-loader"]
         }]
     },
     plugins

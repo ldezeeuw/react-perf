@@ -8,6 +8,10 @@
         }],
         "stage-0"
     ],
-    "plugins": [["lodash", {"id": ["lodash"]}]],
+    "plugins": [
+        ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }],
+        ["lodash", {"id": ["lodash"]}]
+    ],
+
     "comments": true
 }

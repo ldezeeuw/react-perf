@@ -1,8 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './app';
+import Root from './Root';
+import Store from './../../config/store/';
+import {render} from 'react-dom';
+import './../style/index.less';
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);
+const store = Store();
+window.store = store;
+const rootElement = document.getElementById('root');
+render(<Root store={store} />, rootElement);
